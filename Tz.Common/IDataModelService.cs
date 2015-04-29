@@ -8,16 +8,16 @@ namespace Tz.Common
 {
     public interface IDataModelService
     {
-        string GetRegion();
+        string GetCountryRegion();
         void SaveChanges();
-        void ReleaseModel(DbContext model);
+        void ReleaseModel();
     }
 
     public static class DataModelServiceExtension
     {
-        public static DbSet GetDbSet<T>(this IDataModelService svc) where T : DbContext
+        public static DbSet GetDbSet<T>(this IDataModelService model) where T: class
         {
-            var dbContext=svc as DbContext;
+            var dbContext = model as DbContext;
             var dbSet = dbContext.Set<T>();
 
             if(dbSet==null)
@@ -26,6 +26,17 @@ namespace Tz.Common
             }
 
             return dbSet;
+        }
+
+        public static void ReleaseModel(this IDataModelService model)
+        {
+            var dbContext = model as DbContext;
+
+            if(dbContext==null)
+            {
+                throw new Exception("There are no db context to dispose");
+            }
+            dbContext.Dispose();
         }
 
         //public static TResult UsingModel<TModel, TResult>(this IDataModelService svc, Func<TModel, TResult> func) where TModel : DbContext

@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyInjection.cs" />
+    <Compile Include="Factory\ParcelDbContextFactory.cs" />
+    <Compile Include="Interface\IDbContextFactory.cs" />
+    <Compile Include="Interface\IParcelDomain.cs" />
     <Compile Include="Interface\IParcelReservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -18,7 +18,7 @@ namespace ParcelService
         [OperationContract]
         string GetFirstParcel(string region);
 
-        // TODO: Add your service operations here
+
     }
 
 }

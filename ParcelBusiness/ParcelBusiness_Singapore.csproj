@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParcelDomain.cs" />
     <Compile Include="ParcelReservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
