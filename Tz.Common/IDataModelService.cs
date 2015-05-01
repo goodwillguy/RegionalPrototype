@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
+using Tz.Region;
 
 namespace Tz.Common
 {
-    public interface IDataModelService
+    public interface IDataModelService<T> where T : IRegionalConfiguration
     {
         string GetCountryRegion();
         void SaveChanges();
@@ -15,7 +16,7 @@ namespace Tz.Common
 
     public static class DataModelServiceExtension
     {
-        public static DbSet GetDbSet<T>(this IDataModelService model) where T: class
+        public static DbSet GetDbSet<T>(this IDataModelService<IRegionalConfiguration> model) where T: class
         {
             var dbContext = model as DbContext;
             var dbSet = dbContext.Set<T>();
@@ -28,7 +29,7 @@ namespace Tz.Common
             return dbSet;
         }
 
-        public static void ReleaseModel(this IDataModelService model)
+        public static void ReleaseModel(this IDataModelService<IRegionalConfiguration> model)
         {
             var dbContext = model as DbContext;
 

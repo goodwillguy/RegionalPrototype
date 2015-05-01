@@ -1,14 +1,15 @@
-namespace ParcelModel_Genetech
+namespace ParcelModel_Hongkong
 {
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using Tz.Common;
+    using Tz.Region;
 
-    public partial class ParcelDbContext_Genetech : DbContext
+    public partial class ParcelDbContext_Hongkong : DbContext, IDataModelService<IHongkongRegion>
     {
-        public ParcelDbContext_Genetech(IConnectionString con)
+        public ParcelDbContext_Hongkong(IConnectionString con)
             : base(con.ConnectionString("Genetech"))
         {
         }
@@ -41,6 +42,21 @@ namespace ParcelModel_Genetech
                 .HasMany(e => e.ParcelReservations)
                 .WithOptional(e => e.ParcelTransaction)
                 .HasForeignKey(e => e.TransactionId);
+        }
+
+        public string GetCountryRegion()
+        {
+            throw new NotImplementedException();
+        }
+
+        public new void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReleaseModel()
+        {
+            throw new NotImplementedException();
         }
     }
 }

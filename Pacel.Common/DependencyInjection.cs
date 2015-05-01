@@ -1,11 +1,11 @@
-﻿using Pacel.Common.Interface;
+﻿using Parcel.Common.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pacel.Common
+namespace Parcel.Common
 {
     public class DependencyInjection
     {

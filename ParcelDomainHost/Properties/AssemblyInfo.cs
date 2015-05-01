@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ParcelBusiness_Hongkong")]
+[assembly: AssemblyTitle("ParcelDomainHost")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ParcelBusiness_Hongkong")]
+[assembly: AssemblyProduct("ParcelDomainHost")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4e130af0-eed8-4bd0-8f55-84a78c8bac6f")]
+[assembly: Guid("bf362696-8bef-4ea4-8374-7b78a3ad0e96")]
 
 // Version information for an assembly consists of the following four values:
 //

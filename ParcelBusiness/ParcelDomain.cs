@@ -1,20 +1,21 @@
-﻿using Pacel.Common.Interface;
+﻿using Parcel.Common.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tz.Common;
+using Tz.Region;
 
 namespace ParcelBusiness_Singapore
 {
-    public class ParcelDomain : IParcelDomain
+    public class ParcelDomain : IParcelDomain<ISingaporeRegion>
     {
         private readonly IConnectionString globalConnection;
-        private readonly IDbContextFactory dbContextFactory;
-        public ParcelDomain(IConnectionString connectionString,IDbContextFactory dbContextFactory)
+        private readonly IDbContextFactory _dbContextFactory;
+        public ParcelDomain(IDbContextFactory dbContextFactory)
         {
-            globalConnection = connectionString;
+            _dbContextFactory = dbContextFactory;
         }
         public bool PickupParcel(Guid parcelId, string parcelData)
         {

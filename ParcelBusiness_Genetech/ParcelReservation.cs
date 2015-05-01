@@ -1,23 +1,24 @@
-﻿using Pacel.Common.Interface;
-using ParcelModel_Genetech;
+﻿using Parcel.Common.Interface;
+using ParcelModel_Hongkong;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tz.Common;
+using Tz.Region;
 
-namespace ParcelBusiness_Genetech
+namespace ParcelBusiness_Hongkong
 {
-    public class ParcelReservation_Genetech : IParcelReservation
+    public class ParcelReservation_Hongkong : IParcelReservation<IHongkongRegion>
     {
 
         public bool CreateParcel()
         {
             IConnectionString con = new ConnectionStringConfiguration();
-            ParcelDbContext_Genetech db = new ParcelDbContext_Genetech(con);
+            ParcelDbContext_Hongkong db = new ParcelDbContext_Hongkong(con);
 
-            Parcel p = new Parcel();
+            ParcelModel_Hongkong.Parcel p = new ParcelModel_Hongkong.Parcel();
             p.Id = Guid.NewGuid();
 
             p.ConsignmentNo = "9876";
@@ -37,7 +38,7 @@ namespace ParcelBusiness_Genetech
         public string GetFirstParcel()
         {
             IConnectionString con = new ConnectionStringConfiguration();
-            ParcelDbContext_Genetech db = new ParcelDbContext_Genetech(con);
+            ParcelDbContext_Hongkong db = new ParcelDbContext_Hongkong(con);
             var firstParcel = db.Parcels.Where(a=>a.ConsignmentNo=="9876").FirstOrDefault();
             if (firstParcel != null && firstParcel.ConsignmentNo == "9876")
             {

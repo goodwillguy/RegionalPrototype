@@ -4,25 +4,27 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{126A6A93-7038-4C10-8007-7352184BFA3D}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{78FD3991-7C98-4230-B423-CE5EB6E0AD08}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ParcelBusiness_Singapore</RootNamespace>
-    <AssemblyName>ParcelBusiness_Singapore</AssemblyName>
+    <RootNamespace>ParcelDomainHost</RootNamespace>
+    <AssemblyName>ParcelDomainHost</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\ParcelDomainService\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,14 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,32 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParcelDomain.cs" />
-    <Compile Include="ParcelReservation.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="tz.pad.servicehost.exe.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\TZ.Pad.Common\Tz.ParcelModel_Singapore.csproj">
-      <Project>{f3c71bdf-2ada-4d7c-bac6-09a9a5797f55}</Project>
-      <Name>Tz.ParcelModel_Singapore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Pacel.Common\Parcel.Common.csproj">
-      <Project>{494ff4df-be35-4d30-ac6b-cf0e045c2f53}</Project>
-      <Name>Parcel.Common</Name>
+    <ProjectReference Include="..\ParcelDomainService\ParcelDomainService.csproj">
+      <Project>{5c9a8893-c82c-4e0e-81d3-c864c0d7aa02}</Project>
+      <Name>ParcelDomainService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tz.Common\Tz.Common.csproj">
       <Project>{837df871-0969-4edb-ac8c-f890aa60c46e}</Project>
       <Name>Tz.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Tz.Region\Tz.Region.csproj">
-      <Project>{f0ed66fe-88c7-4646-8a0b-fc72e8537e1f}</Project>
-      <Name>Tz.Region</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

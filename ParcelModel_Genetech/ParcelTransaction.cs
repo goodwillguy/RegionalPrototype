@@ -1,4 +1,4 @@
-namespace ParcelModel_Genetech
+namespace ParcelModel_Hongkong
 {
     using System;
     using System.Collections.Generic;

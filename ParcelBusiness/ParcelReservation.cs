@@ -1,4 +1,4 @@
-﻿using Pacel.Common.Interface;
+﻿using Parcel.Common.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Tz.Common;
 using Tz.ParcelModel_Singapore;
+using Tz.Region;
 
 namespace ParcelBusiness_Singapore
 {
-    public class ParcelReservation:IParcelReservation
+    public class ParcelReservation:IParcelReservation<ISingaporeRegion>
     {
 
         public bool CreateParcel()
@@ -17,7 +18,7 @@ namespace ParcelBusiness_Singapore
             IConnectionString con = new ConnectionStringConfiguration();
             ParcelDbContext_Singapore db = new ParcelDbContext_Singapore(con);
 
-            Parcel p = new Parcel();
+            Tz.ParcelModel_Singapore.Parcel p = new Tz.ParcelModel_Singapore.Parcel();
             p.Id = Guid.NewGuid();
 
             p.ParcelId = Guid.NewGuid().ToString();

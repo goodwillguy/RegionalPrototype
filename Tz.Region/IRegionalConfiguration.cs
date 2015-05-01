@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tz.Common;
 
-namespace Parcel.Common.Interface
+namespace Tz.Region
 {
-    public interface IDbContextFactory
+    public interface IRegionalConfiguration
     {
-        
+        string RegionName();
     }
 }

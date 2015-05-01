@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ParcelModel_Genetech</RootNamespace>
     <AssemblyName>ParcelModel_Genetech</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,7 +53,7 @@
     <Compile Include="KioskView.cs" />
     <Compile Include="LockerView.cs" />
     <Compile Include="Parcel.cs" />
-    <Compile Include="ParcelDbContext_Genetech.cs" />
+    <Compile Include="ParcelDbContext_Hongkong.cs" />
     <Compile Include="ParcelReservation.cs" />
     <Compile Include="ParcelTransaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +66,10 @@
     <ProjectReference Include="..\Tz.Common\Tz.Common.csproj">
       <Project>{837df871-0969-4edb-ac8c-f890aa60c46e}</Project>
       <Name>Tz.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Region\Tz.Region.csproj">
+      <Project>{f0ed66fe-88c7-4646-8a0b-fc72e8537e1f}</Project>
+      <Name>Tz.Region</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
