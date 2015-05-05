@@ -11,10 +11,13 @@ namespace Tz.Common
     {
         protected SimpleInjector.Integration.Wcf.SimpleInjectorServiceHost Host;
 
+        protected readonly Container _container = null;
+
         public SelfHostedWCF(Container container)
         {
             //Host = new SimpleInjectorServiceHost(container, this.GetType(), new Uri("http://localhost:9191"));
             //Host.Open();
+            _container = container;
         }
     }
 }

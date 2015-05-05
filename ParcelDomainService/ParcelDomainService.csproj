@@ -36,11 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SimpleInjector">
-      <HintPath>..\packages\SimpleInjector.2.7.3\lib\net45\SimpleInjector.dll</HintPath>
-    </Reference>
-    <Reference Include="SimpleInjector.Diagnostics">
-      <HintPath>..\packages\SimpleInjector.2.7.3\lib\net45\SimpleInjector.Diagnostics.dll</HintPath>
+    <Reference Include="SimpleInjector, Version=2.8.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SimpleInjector.2.8.0\lib\net45\SimpleInjector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +66,10 @@
     <ProjectReference Include="..\Tz.Common\Tz.Common.csproj">
       <Project>{837df871-0969-4edb-ac8c-f890aa60c46e}</Project>
       <Name>Tz.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tz.Region\Tz.Region.csproj">
+      <Project>{f0ed66fe-88c7-4646-8a0b-fc72e8537e1f}</Project>
+      <Name>Tz.Region</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
