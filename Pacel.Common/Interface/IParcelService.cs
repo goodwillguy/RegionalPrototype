@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using Tz.Common;
 using Tz.Region;
 
-namespace Parcel.Common.Interface
+namespace Tz.Parcel.Common.Interface
 {
-    public interface IParcelDomain<out T> where T: IRegionalConfiguration
+    public interface IParcelService
     {
+        void SyncParcel(string parcelInformation);
+        void PushParcel(string parcelIformation);
         bool PickupParcel(Guid parcelId, string parcelData);
     }
 }

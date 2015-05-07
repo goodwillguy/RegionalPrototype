@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tz.Region;
 
-namespace ParcelBusiness_Singapore
+namespace Tz.Singapore_ParcelDomainService
 {
     public class RegionalConfiguration : ISingaporeRegion
     {

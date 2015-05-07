@@ -1,4 +1,6 @@
-﻿using Parcel.Common.Factory;
+﻿using Tz.Parcel.Common.Factory;
+using Tz.Parcel.Common.Interface;
+using Tz.Parcel.Common.Service;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
@@ -6,19 +8,22 @@ using System.Linq;
 using System.ServiceModel;
 using System.Web;
 using Tz.Common;
+using Tz.Region;
 
-namespace ParcelDomainService
+namespace ParcelService
 {
-    public class ParcelService : SelfHostedWCF, IParcelService
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)] 
+    public class ParcelService :  IParcelService
     {
-        private RegionalParcelDomainFactory _domianFactory;
-
+        private IRegionalFactory _domianFactory;
+        Container _container = Bootstrapper.Container;
         public ParcelService()
-            : base(Bootstrapper.Container)
         {
+            _domianFactory = _container.GetInstance(typeof(IRegionalFactory)) as IRegionalFactory;
 
-            _domianFactory = _container.GetInstance(typeof(RegionalParcelDomainFactory)) as RegionalParcelDomainFactory;
         }
+
+      
 
         void InitialiseComponents()
         {
@@ -35,12 +40,16 @@ namespace ParcelDomainService
         {
             return "test";
         }
-
+        
         public bool PickupParcel(Guid parcelId, string parcelData)
         {
-            var singaporeInstance = _domianFactory.GetRegionalInstance(parcelData);
+            parcelData = "Singapore";
+            //var singaporeInstance = _domianFactory.GetInstance<IRegionalParcelDomainService<IRegionalConfiguration>>(parcelData);
+            var singaporetype = _domianFactory.GetType<IRegionalParcelDomainService<IRegionalConfiguration>>(parcelData);
 
-            singaporeInstance.PickupParcel(Guid.Empty,"test");
+            var singaporeInstance = _container.GetInstance(singaporetype) as IRegionalParcelDomainService<IRegionalConfiguration>;
+
+            singaporeInstance.PickupParcel(Guid.Empty, "test");
             return false;
         }
     }

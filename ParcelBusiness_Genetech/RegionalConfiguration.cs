@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tz.Region;
 
-namespace ParcelBusiness_Hongkong
+namespace Tz.Hongkong_ParcelDomainService
 {
     public class RegionalConfiguration:IHongkongRegion
     {

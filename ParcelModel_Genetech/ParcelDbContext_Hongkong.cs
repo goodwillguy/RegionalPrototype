@@ -1,4 +1,4 @@
-namespace ParcelModel_Hongkong
+namespace Tz.Hongkong_ParcelPersistanceModel
 {
     using System;
     using System.Data.Entity;

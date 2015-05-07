@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelBusiness_Singapore", "ParcelBusiness\ParcelBusiness_Singapore.csproj", "{126A6A93-7038-4C10-8007-7352184BFA3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singapore_ParcelDomainService", "ParcelBusiness\Singapore_ParcelDomainService.csproj", "{126A6A93-7038-4C10-8007-7352184BFA3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.ParcelModel_Singapore", "..\TZ.Pad.Common\Tz.ParcelModel_Singapore.csproj", "{F3C71BDF-2ADA-4D7C-BAC6-09A9A5797F55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singapore_ParcelPersistanceModel", "..\TZ.Pad.Common\Singapore_ParcelPersistanceModel.csproj", "{F3C71BDF-2ADA-4D7C-BAC6-09A9A5797F55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Common", "Tz.Common\Tz.Common.csproj", "{837DF871-0969-4EDB-AC8C-F890AA60C46E}"
 EndProject
@@ -15,15 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Singapore", "Singapore", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hongkong", "Hongkong", "{E1D4EE29-8E3C-443C-A38B-0FF91A10CE24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelBusiness_Hongkong", "ParcelBusiness_Genetech\ParcelBusiness_Hongkong.csproj", "{BED3BEBE-9293-4100-AF10-AC0AFB04E5A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hongkong_ParcelDomainService", "ParcelBusiness_Genetech\Hongkong_ParcelDomainService.csproj", "{BED3BEBE-9293-4100-AF10-AC0AFB04E5A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelModel_Genetech", "ParcelModel_Genetech\ParcelModel_Genetech.csproj", "{67B5AAA3-B8BF-4481-8251-4347EF55357A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hongkong_ParcelPersistanceModel", "ParcelModel_Genetech\Hongkong_ParcelPersistanceModel.csproj", "{67B5AAA3-B8BF-4481-8251-4347EF55357A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tz.Region", "Tz.Region\Tz.Region.csproj", "{F0ED66FE-88C7-4646-8A0B-FC72E8537E1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDomainHost", "ParcelDomainHost\ParcelDomainHost.csproj", "{78FD3991-7C98-4230-B423-CE5EB6E0AD08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelDomainService", "ParcelDomainService\ParcelDomainService.csproj", "{5C9A8893-C82C-4E0E-81D3-C864C0D7AA02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelService", "ParcelDomainService\ParcelService.csproj", "{5C9A8893-C82C-4E0E-81D3-C864C0D7AA02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{3006043C-ED68-4CA2-8E70-A0CF3232F9F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parcel.DomainModel", "Parcel.DomainModel\Parcel.DomainModel.csproj", "{40D00207-AA58-4F6D-9490-5831E348346B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -203,6 +207,24 @@ Global
 		{5C9A8893-C82C-4E0E-81D3-C864C0D7AA02}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{5C9A8893-C82C-4E0E-81D3-C864C0D7AA02}.UAT|Any CPU.Build.0 = Release|Any CPU
 		{5C9A8893-C82C-4E0E-81D3-C864C0D7AA02}.UAT|x86.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.PROD|Any CPU.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.PROD|Any CPU.Build.0 = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.PROD|x86.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.Release|x86.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SIT|Any CPU.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SIT|Any CPU.Build.0 = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SIT|x86.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SITSINGAPORE|Any CPU.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SITSINGAPORE|Any CPU.Build.0 = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.SITSINGAPORE|x86.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.UAT|Any CPU.ActiveCfg = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{40D00207-AA58-4F6D-9490-5831E348346B}.UAT|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -210,7 +232,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{126A6A93-7038-4C10-8007-7352184BFA3D} = {0D19B8A8-773C-4686-B212-2620BFFE3FCF}
 		{F3C71BDF-2ADA-4D7C-BAC6-09A9A5797F55} = {0D19B8A8-773C-4686-B212-2620BFFE3FCF}
+		{494FF4DF-BE35-4D30-AC6B-CF0E045C2F53} = {3006043C-ED68-4CA2-8E70-A0CF3232F9F5}
 		{BED3BEBE-9293-4100-AF10-AC0AFB04E5A0} = {E1D4EE29-8E3C-443C-A38B-0FF91A10CE24}
 		{67B5AAA3-B8BF-4481-8251-4347EF55357A} = {E1D4EE29-8E3C-443C-A38B-0FF91A10CE24}
+		{40D00207-AA58-4F6D-9490-5831E348346B} = {3006043C-ED68-4CA2-8E70-A0CF3232F9F5}
 	EndGlobalSection
 EndGlobal

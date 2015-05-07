@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ParcelService")]
+[assembly: AssemblyTitle("Tz.ParcelDomainModel")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ParcelService")]
+[assembly: AssemblyProduct("Tz.ParcelDomainModel")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f0ce84e5-58b3-442e-833a-ef891394ea28")]
+[assembly: Guid("1b5a9237-0f83-486e-8508-1b62182cf360")]
 
 // Version information for an assembly consists of the following four values:
 //

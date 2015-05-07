@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tz.Common;
 
-namespace Parcel.Common.Factory
+namespace Tz.Parcel.Common.Factory
 {
     public class GlobalConnectionFetcher : IConnectionString
     {

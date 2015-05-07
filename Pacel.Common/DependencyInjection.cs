@@ -1,11 +1,11 @@
-﻿using Parcel.Common.Interface;
+﻿using Tz.Parcel.Common.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Parcel.Common
+namespace Tz.Parcel.Common
 {
     public class DependencyInjection
     {

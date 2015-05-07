@@ -1,4 +1,5 @@
-﻿using Parcel.Common.Interface;
+﻿using Tz.Parcel.Common.Interface;
+using Tz.Parcel.Common.Service;
 using SimpleInjector;
 using System;
 using System.Collections.Generic;
@@ -6,50 +7,54 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Tz.Common;
 using Tz.Region;
 
-namespace Parcel.Common.Factory
+namespace Tz.Parcel.Common.Factory
 {
-    public class RegionalParcelDomainFactory
+    public class RegionalParcelDomainFactory : IRegionalFactory
     {
-        public readonly Dictionary<string, List<TypeInfo>> _regionalAssembliesConfig = new Dictionary<string, List<TypeInfo>>();
+        public const string DefaultRegion = "Default";
+        private static readonly Dictionary<string, List<TypeInfo>> _regionalAssembliesConfig = new Dictionary<string, List<TypeInfo>>();
         private Container _container;
 
-        private List<Type> _genericTypeCollection=new List<Type>();
-        public RegionalParcelDomainFactory(Container container)
+        private List<Type> _genericTypeCollection = new List<Type>();
+        public RegionalParcelDomainFactory(Container container, IConnectionString connectionString)
         {
-            PopulateGenericType();
-            GetRegionalAssemblies();
             _container = container;
         }
 
-        void PopulateGenericType()
+        static RegionalParcelDomainFactory()
         {
-            _genericTypeCollection=typeof(RegionalParcelDomainFactory).Assembly.GetExportedTypes()
-                .SelectMany(ty=>ty.GetInterfaces())
-                .Where(typ=>typ.IsGenericType)
-                .Select(typ=>typ).ToList();
+            GetRegionalAssemblies();
+
         }
 
-
-        void GetRegionalAssemblies()
+        static void GetRegionalAssemblies()
         {
 
-
-
             List<string> RegionalAssemblies = new List<string>();
-            RegionalAssemblies.Add("ParcelBusiness_Singapore");
-            RegionalAssemblies.Add("ParcelBusiness_Hongkong");
+            RegionalAssemblies.Add("Tz.Singapore_ParcelDomainService");
+            RegionalAssemblies.Add("Tz.Hongkong_ParcelDomainService");
 
             foreach (var assembly in RegionalAssemblies)
             {
                 var assemb = Assembly.Load(assembly);
 
+                List<TypeInfo> genericTypeInfoForRegion = new List<TypeInfo>();
+
                 var regionalConfigurationInfo = assemb.GetExportedTypes()
                     .Where(types => types.GetInterfaces().Any(i => i.IsAssignableFrom(typeof(IRegionalConfiguration))))
                     .FirstOrDefault();
 
+                genericTypeInfoForRegion = GetGenericTypesFromAssembly(assemb);
 
+                foreach(var dependentAssembly in assemb.GetReferencedAssemblies().Where(ass=>ass.Name.ToLower().Contains("tz")).ToList())
+                {
+                    var loadDependentAssembly = Assembly.Load(dependentAssembly);
+                    var dependentAssemblyTypes = GetGenericTypesFromAssembly(loadDependentAssembly);
+                    genericTypeInfoForRegion.AddRange(dependentAssemblyTypes);
+                }
 
 
                 if (regionalConfigurationInfo == null)
@@ -60,39 +65,76 @@ namespace Parcel.Common.Factory
                 var reginalAssemblyInstance = Activator.CreateInstance(regionalConfigurationInfo) as IRegionalConfiguration;
 
 
-                var genericDefintion = assemb.GetExportedTypes()
-                    .SelectMany(typ=>typ.GetInterfaces())
-                    .Where(inter=>inter.IsGenericType)
-                    .Select(inter=>inter.GetTypeInfo())
-                    .ToList();
 
-                _regionalAssembliesConfig.Add(reginalAssemblyInstance.RegionName(), genericDefintion);
+                _regionalAssembliesConfig.Add(reginalAssemblyInstance.RegionName(), genericTypeInfoForRegion);
             }
         }
 
-        public IParcelDomain<IRegionalConfiguration> GetRegionalInstance(string region)
+        static  List<TypeInfo> GetGenericTypesFromAssembly(Assembly assembly)
         {
-            var targetType = typeof(IParcelDomain<IRegionalConfiguration>).GetGenericTypeDefinition();
-            List<TypeInfo> regionType = _regionalAssembliesConfig[region];
 
-           var parcelDomain= regionType
-                            .Where(ty => ty.GetGenericTypeDefinition() == targetType)
-                            .FirstOrDefault();
+            var genericDefintion = assembly.GetExportedTypes()
+                .SelectMany(typ => typ.GetInterfaces())
+                .Where(inter => inter.IsGenericType)
+                .Select(inter => inter.GetTypeInfo())
+                .ToList();
 
-           IParcelDomain<ISingaporeRegion> instance = _container.GetInstance(parcelDomain) as IParcelDomain<ISingaporeRegion>;
+            return genericDefintion;
+        }
 
-           return instance as IParcelDomain<IRegionalConfiguration>;
+        public object ResolveInstance(Type type)
+        {
+            return _container.GetInstance(type);
+        }
+
+        public List<TypeInfo> GetAssemblyTypesByRegion(string region)
+        {
+            return _regionalAssembliesConfig[region];
         }
 
     }
 
-    //public static class FactoryExtension
-    //{
-    //    public static T GetInstance<T>(this RegionalParcelDomainFactory factory,string regionString) where T:interface
-    //    {
-    //        var regionInterface = factory._regionalAssembliesConfig[regionString];
-            
+    public static class FactoryExtension
+    {
+        public static T GetInstance<T>(this IRegionalFactory factory, string regionString)
+        {
+            var targetType = typeof(T).GetGenericTypeDefinition();
+            List<TypeInfo> regionType = factory.GetAssemblyTypesByRegion(regionString);
 
-    //    }
-    //}
+            if (regionType == null)
+            {
+                regionType = factory.GetAssemblyTypesByRegion(RegionalParcelDomainFactory.DefaultRegion);
+            }
+
+            var parcelDomain = regionType
+                             .Where(ty => ty.GetGenericTypeDefinition() == targetType)
+                             .FirstOrDefault();
+
+            T instance = (T)factory.ResolveInstance(parcelDomain);
+
+            return instance;
+
+
+        }
+
+        public static TypeInfo GetType<T>(this IRegionalFactory factory, string regionString)
+        {
+            var targetType = typeof(T).GetGenericTypeDefinition();
+            List<TypeInfo> regionType = factory.GetAssemblyTypesByRegion(regionString);
+
+            if (regionType == null)
+            {
+                regionType = factory.GetAssemblyTypesByRegion(RegionalParcelDomainFactory.DefaultRegion);
+            }
+
+            var parcelDomain = regionType
+                             .Where(ty => ty.GetGenericTypeDefinition() == targetType)
+                             .FirstOrDefault();
+
+
+            return parcelDomain;
+
+
+        }
+    }
 }
