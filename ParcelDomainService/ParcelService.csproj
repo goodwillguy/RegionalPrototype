@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap\Bootstrap.cs" />
-    <Compile Include="IParcelService.cs" />
     <Compile Include="ParcelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

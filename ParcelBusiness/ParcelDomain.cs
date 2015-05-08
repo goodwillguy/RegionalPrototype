@@ -24,11 +24,26 @@ namespace Tz.Singapore_ParcelDomainService
             _regionalFactory = regionalFactory;
             _parcelRepository = parcelRepository;
         }
-        public bool PickupParcel(Guid parcelId, string parcelData)
+        public void PushParcel(string parcelIformation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateAndReservceParcel(string region)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetFirstParcel(string region)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool PickupParcel(string region, string parcelData)
         {
             bool isSuccess = false;
 
-            var parcel=_parcelRepository.GetParcelById(Guid.Empty);
+            var parcel = _parcelRepository.GetParcelById(Guid.Empty);
 
             ParcelRepository a = null;
 
@@ -36,23 +51,6 @@ namespace Tz.Singapore_ParcelDomainService
 
 
             return isSuccess;
-        }
-
-        public void SyncParcel(string parcelInformation)
-        {
-            ParcelDm domain = null;
-
-            domain = JsonConvert.DeserializeObject<ParcelDm>(parcelInformation);
-
-            if (domain != null)
-            {
-                _parcelRepository.SaveParcel(domain);
-            }
-        }
-
-        public void PushParcel(string parcelIformation)
-        {
-            throw new NotImplementedException();
         }
     }
 }

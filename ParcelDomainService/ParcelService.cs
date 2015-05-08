@@ -12,8 +12,7 @@ using Tz.Region;
 
 namespace ParcelService
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)] 
-    public class ParcelService :  IParcelService
+    public class ParcelService : IParcelService
     {
         private IRegionalFactory _domianFactory;
         Container _container = Bootstrapper.Container;
@@ -23,7 +22,7 @@ namespace ParcelService
 
         }
 
-      
+
 
         void InitialiseComponents()
         {
@@ -33,24 +32,25 @@ namespace ParcelService
 
         public void CreateAndReservceParcel(string region)
         {
-            
+
         }
 
         public string GetFirstParcel(string region)
         {
             return "test";
         }
-        
-        public bool PickupParcel(Guid parcelId, string parcelData)
+
+        public bool PickupParcel(string region, string parcelData)
         {
-            parcelData = "Singapore";
-            //var singaporeInstance = _domianFactory.GetInstance<IRegionalParcelDomainService<IRegionalConfiguration>>(parcelData);
+            bool result;
             var singaporetype = _domianFactory.GetType<IRegionalParcelDomainService<IRegionalConfiguration>>(parcelData);
 
             var singaporeInstance = _container.GetInstance(singaporetype) as IRegionalParcelDomainService<IRegionalConfiguration>;
 
-            singaporeInstance.PickupParcel(Guid.Empty, "test");
-            return false;
+            result = singaporeInstance.PickupParcel(region, parcelData);
+
+            return result;
+
         }
     }
 }
